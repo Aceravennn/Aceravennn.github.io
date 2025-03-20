@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Let's watch Pusuan or Laruan bebii?</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="container">
+        <h2>Would you want to watch "Pusuan or Laruan" with me bebii?</h2>
+        <button id="noButton">No</button>
+        <button id="yesButton">Yes</button>
+    </div>
+
+    <script>
+        let attempts = 0;
+        const noButton = document.getElementById("noButton");
+        const yesButton = document.getElementById("yesButton");
+        const container = document.querySelector(".container");
+    
+        noButton.addEventListener("mouseenter", () => {
+            attempts++;
+
+            let containerRect = container.getBoundingClientRect();
+            let buttonRect = noButton.getBoundingClientRect();
+            let maxX = containerRect.width - buttonRect.width;
+            let maxY = containerRect.height - buttonRect.height;
+            let newX = Math.random() * maxX;
+            let newY = Math.random() * maxY;
+            noButton.style.left = `${newX}px`;
+            noButton.style.top = `${newY}px`;
+            noButton.style.position = "absolute";
+    
+            if (attempts > 18) {
+                yesButton.style.display = "inline-block"; 
+                yesButton.style.fontSize = `${0.3 + attempts * 0.2}px`; 
+            }
+        });
+    
+        yesButton.addEventListener("click", () => {
+            window.location.href = "https://www.youtube.com/watch?v=AzoFsLdEhqM"; 
+        });
+    </script>
+
+</body>
+</html>
